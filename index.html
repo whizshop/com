@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Food Order</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html">View Cart (<span id="cart-count">0</span>)</a>
+        </nav>
+    </header>
+
+    <section class="menu">
+        <!-- Breakfast Section -->
+        <h2>Breakfast</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/pancakes.jpg" alt="Pancakes">
+                <p>Pancakes - Ksh 250</p>
+                <button class="add-to-cart" data-name="Pancakes" data-price="250" data-image="images/pancakes.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/omelette.jpg" alt="Omelette">
+                <p>Omelette - Ksh 200</p>
+                <button class="add-to-cart" data-name="Omelette" data-price="200" data-image="images/omelette.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/french-toast.jpg" alt="French Toast">
+                <p>French Toast - Ksh 230</p>
+                <button class="add-to-cart" data-name="French Toast" data-price="230" data-image="images/french-toast.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/breakfast-burrito.jpg" alt="Breakfast Burrito">
+                <p>Breakfast Burrito - Ksh 280</p>
+                <button class="add-to-cart" data-name="Breakfast Burrito" data-price="280" data-image="images/breakfast-burrito.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/avocado-toast.jpg" alt="Avocado Toast">
+                <p>Avocado Toast - Ksh 220</p>
+                <button class="add-to-cart" data-name="Avocado Toast" data-price="220" data-image="images/avocado-toast.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/scrambled-eggs-bacon.jpg" alt="Scrambled Eggs & Bacon">
+                <p>Scrambled Eggs & Bacon - Ksh 300</p>
+                <button class="add-to-cart" data-name="Scrambled Eggs & Bacon" data-price="300" data-image="images/scrambled-eggs-bacon.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/waffles-syrup.jpg" alt="Waffles with Syrup">
+                <p>Waffles with Syrup - Ksh 270</p>
+                <button class="add-to-cart" data-name="Waffles with Syrup" data-price="270" data-image="images/waffles-syrup.jpg">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Lunch Section -->
+        <h2>Lunch</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/grilled-chicken-salad.jpg" alt="Grilled Chicken Salad">
+                <p>Grilled Chicken Salad - Ksh 450</p>
+                <button class="add-to-cart" data-name="Grilled Chicken Salad" data-price="450" data-image="images/grilled-chicken-salad.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/beef-burger.jpg" alt="Beef Burger">
+                <p>Beef Burger - Ksh 400</p>
+                <button class="add-to-cart" data-name="Beef Burger" data-price="400" data-image="images/beef-burger.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/vegetable-sandwich.jpg" alt="Vegetable Sandwich">
+                <p>Vegetable Sandwich - Ksh 350</p>
+                <button class="add-to-cart" data-name="Vegetable Sandwich" data-price="350" data-image="images/vegetable-sandwich.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/spaghetti-bolognese.jpg" alt="Spaghetti Bolognese">
+                <p>Spaghetti Bolognese - Ksh 500</p>
+                <button class="add-to-cart" data-name="Spaghetti Bolognese" data-price="500" data-image="images/spaghetti-bolognese.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/chicken-wrap.jpg" alt="Chicken Wrap">
+                <p>Chicken Wrap - Ksh 380</p>
+                <button class="add-to-cart" data-name="Chicken Wrap" data-price="380" data-image="images/chicken-wrap.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/fried-rice-chicken.jpg" alt="Fried Rice with Chicken">
+                <p>Fried Rice with Chicken - Ksh 450</p>
+                <button class="add-to-cart" data-name="Fried Rice with Chicken" data-price="450" data-image="images/fried-rice-chicken.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/fish-and-chips.jpg" alt="Fish & Chips">
+                <p>Fish & Chips - Ksh 420</p>
+                <button class="add-to-cart" data-name="Fish & Chips" data-price="420" data-image="images/fish-and-chips.jpg">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Dinner Section -->
+        <h2>Dinner</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/steak-mashed-potatoes.jpg" alt="Steak & Mashed Potatoes">
+                <p>Steak & Mashed Potatoes - Ksh 600</p>
+                <button class="add-to-cart" data-name="Steak & Mashed Potatoes" data-price="600" data-image="images/steak-mashed-potatoes.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/grilled-salmon.jpg" alt="Grilled Salmon">
+                <p>Grilled Salmon - Ksh 750</p>
+                <button class="add-to-cart" data-name="Grilled Salmon" data-price="750" data-image="images/grilled-salmon.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/stuffed-bell-peppers.jpg" alt="Stuffed Bell Peppers">
+                <p>Stuffed Bell Peppers - Ksh 480</p>
+                <button class="add-to-cart" data-name="Stuffed Bell Peppers" data-price="480" data-image="images/stuffed-bell-peppers.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/chicken-alfredo.jpg" alt="Chicken Alfredo">
+                <p>Chicken Alfredo - Ksh 550</p>
+                <button class="add-to-cart" data-name="Chicken Alfredo" data-price="550" data-image="images/chicken-alfredo.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/lamb-chops.jpg" alt="Lamb Chops">
+                <p>Lamb Chops - Ksh 800</p>
+                <button class="add-to-cart" data-name="Lamb Chops" data-price="800" data-image="images/lamb-chops.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/vegetable-lasagna.jpg" alt="Vegetable Lasagna">
+                <p>Vegetable Lasagna - Ksh 480</p>
+                <button class="add-to-cart" data-name="Vegetable Lasagna" data-price="480" data-image="images/vegetable-lasagna.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/beef-stir-fry.jpg" alt="Beef Stir Fry">
+                <p>Beef Stir Fry - Ksh 550</p>
+                <button class="add-to-cart" data-name="Beef Stir Fry" data-price="550" data-image="images/beef-stir-fry.jpg">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Desserts Section -->
+        <h2>Desserts</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/chocolate-cake.jpg" alt="Chocolate Cake">
+                <p>Chocolate Cake - Ksh 350</p>
+                <button class="add-to-cart" data-name="Chocolate Cake" data-price="350" data-image="images/chocolate-cake.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/strawberry-cheesecake.jpg" alt="Strawberry Cheesecake">
+                <p>Strawberry Cheesecake - Ksh 400</p>
+                <button class="add-to-cart" data-name="Strawberry Cheesecake" data-price="400" data-image="images/strawberry-cheesecake.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/apple-pie.jpg" alt="Apple Pie">
+                <p>Apple Pie - Ksh 300</p>
+                <button class="add-to-cart" data-name="Apple Pie" data-price="300" data-image="images/apple-pie.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/tiramisu.jpg" alt="Tiramisu">
+                <p>Tiramisu - Ksh 450</p>
+                <button class="add-to-cart" data-name="Tiramisu" data-price="450" data-image="images/tiramisu.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/ice-cream-sundae.jpg" alt="Ice Cream Sundae">
+                <p>Ice Cream Sundae - Ksh 250</p>
+                <button class="add-to-cart" data-name="Ice Cream Sundae" data-price="250" data-image="images/ice-cream-sundae.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/banana-split.jpg" alt="Banana Split">
+                <p>Banana Split - Ksh 320</p>
+                <button class="add-to-cart" data-name="Banana Split" data-price="320" data-image="images/banana-split.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/brownies.jpg" alt="Brownies">
+                <p>Brownies - Ksh 280</p>
+                <button class="add-to-cart" data-name="Brownies" data-price="280" data-image="images/brownies.jpg">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Drinks Section -->
+        <h2>Drinks</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/iced-coffee.jpg" alt="Iced Coffee">
+                <p>Iced Coffee - Ksh 250</p>
+                <button class="add-to-cart" data-name="Iced Coffee" data-price="250" data-image="images/iced-coffee.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/fresh-orange-juice.jpg" alt="Fresh Orange Juice">
+                <p>Fresh Orange Juice - Ksh 200</p>
+                <button class="add-to-cart" data-name="Fresh Orange Juice" data-price="200" data-image="images/fresh-orange-juice.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/milkshake.jpg" alt="Milkshake">
+                <p>Milkshake - Ksh 300</p>
+                <button class="add-to-cart" data-name="Milkshake" data-price="300" data-image="images/milkshake.jpg">Add to Cart</button>
+            </div>
+                        <div class="menu-item">
+                <img src="images/fruit-smoothie.jpg" alt="Fruit Smoothie">
+                <p>Fruit Smoothie - Ksh 280</p>
+                <button class="add-to-cart" data-name="Fruit Smoothie" data-price="280" data-image="images/fruit-smoothie.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/hot-chocolate.jpg" alt="Hot Chocolate">
+                <p>Hot Chocolate - Ksh 350</p>
+                <button class="add-to-cart" data-name="Hot Chocolate" data-price="350" data-image="images/hot-chocolate.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/green-tea.jpg" alt="Green Tea">
+                <p>Green Tea - Ksh 180</p>
+                <button class="add-to-cart" data-name="Green Tea" data-price="180" data-image="images/green-tea.jpg">Add to Cart</button>
+            </div>
+        </div>
+
+        <!-- Snacks Section -->
+        <h2>Snacks</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="images/french-fries.jpg" alt="French Fries">
+                <p>French Fries - Ksh 200</p>
+                <button class="add-to-cart" data-name="French Fries" data-price="200" data-image="images/french-fries.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/popcorn.jpg" alt="Popcorn">
+                <p>Popcorn - Ksh 150</p>
+                <button class="add-to-cart" data-name="Popcorn" data-price="150" data-image="images/popcorn.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/nachos-cheese.jpg" alt="Nachos with Cheese">
+                <p>Nachos with Cheese - Ksh 300</p>
+                <button class="add-to-cart" data-name="Nachos with Cheese" data-price="300" data-image="images/nachos-cheese.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/chicken-wings.jpg" alt="Chicken Wings">
+                <p>Chicken Wings - Ksh 450</p>
+                <button class="add-to-cart" data-name="Chicken Wings" data-price="450" data-image="images/chicken-wings.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/spring-rolls.jpg" alt="Spring Rolls">
+                <p>Spring Rolls - Ksh 350</p>
+                <button class="add-to-cart" data-name="Spring Rolls" data-price="350" data-image="images/spring-rolls.jpg">Add to Cart</button>
+            </div>
+            <div class="menu-item">
+                <img src="images/garlic-bread.jpg" alt="Garlic Bread">
+                <p>Garlic Bread - Ksh 250</p>
+                <button class="add-to-cart" data-name="Garlic Bread" data-price="250" data-image="images/garlic-bread.jpg">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popup for notifications -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p id="popup-message"></p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+</body>
+</html>
