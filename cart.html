@@ -27,27 +27,8 @@
     <!-- Recommendations Section -->
     <section class="recommendations">
         <h3>You Might Also Like</h3>
-        <div class="recommendations-grid">
-            <div class="recommendation-item">
-                <img src="images/steak-mashed-potatoes.jpg" alt="Steak & Mashed Potatoes">
-                <p>Steak & Mashed Potatoes - Ksh 600</p>
-                <button class="add-to-cart" data-name="Steak & Mashed Potatoes" data-price="600" data-image="images/steak-mashed-potatoes.jpg">Add to Cart</button>
-            </div>
-            <div class="recommendation-item">
-                <img src="images/chocolate-cake.jpg" alt="Chocolate Cake">
-                <p>Chocolate Cake - Ksh 350</p>
-                <button class="add-to-cart" data-name="Chocolate Cake" data-price="350" data-image="images/chocolate-cake.jpg">Add to Cart</button>
-            </div>
-            <div class="recommendation-item">
-                <img src="images/iced-coffee.jpg" alt="Iced Coffee">
-                <p>Iced Coffee - Ksh 250</p>
-                <button class="add-to-cart" data-name="Iced Coffee" data-price="250" data-image="images/iced-coffee.jpg">Add to Cart</button>
-            </div>
-            <div class="recommendation-item">
-                <img src="images/french-fries.jpg" alt="French Fries">
-                <p>French Fries - Ksh 200</p>
-                <button class="add-to-cart" data-name="French Fries" data-price="200" data-image="images/french-fries.jpg">Add to Cart</button>
-            </div>
+        <div id="recommendations-grid" class="recommendations-grid">
+            <!-- Recommendations will be dynamically inserted here -->
         </div>
     </section>
 
@@ -63,5 +44,63 @@
             <button onclick="closeOrderPopup()">OK</button>
         </div>
     </div>
+
+    <script>
+        // Function to get meal-based recommendations
+        function getMealSuggestions() {
+            const hour = new Date().getHours();
+            let mealTime = '';
+
+            if (hour >= 6 && hour < 12) {
+                mealTime = 'breakfast';
+            } else if (hour >= 12 && hour < 18) {
+                mealTime = 'lunch';
+            } else {
+                mealTime = 'dinner';
+            }
+
+            const suggestions = {
+                breakfast: [
+                    { name: "Pancakes", price: 250, image: "images/pancakes.jpg" },
+                    { name: "Omelette", price: 200, image: "images/omelette.jpg" },
+                    { name: "French Toast", price: 230, image: "images/french-toast.jpg" },
+                    { name: "Avocado Toast", price: 220, image: "images/avocado-toast.jpg" }
+                ],
+                lunch: [
+                    { name: "Grilled Chicken Salad", price: 450, image: "images/grilled-chicken-salad.jpg" },
+                    { name: "Beef Burger", price: 400, image: "images/beef-burger.jpg" },
+                    { name: "Spaghetti Bolognese", price: 500, image: "images/spaghetti-bolognese.jpg" },
+                    { name: "Fish & Chips", price: 420, image: "images/fish-and-chips.jpg" }
+                ],
+                dinner: [
+                    { name: "Steak & Mashed Potatoes", price: 600, image: "images/steak-mashed-potatoes.jpg" },
+                    { name: "Grilled Salmon", price: 750, image: "images/grilled-salmon.jpg" },
+                    { name: "Chicken Alfredo", price: 550, image: "images/chicken-alfredo.jpg" },
+                    { name: "Vegetable Lasagna", price: 480, image: "images/vegetable-lasagna.jpg" }
+                ]
+            };
+
+            return suggestions[mealTime];
+        }
+
+        // Function to render meal-based recommendations
+        function renderRecommendations() {
+            const recommendationsGrid = document.getElementById("recommendations-grid");
+            const mealSuggestions = getMealSuggestions();
+
+            recommendationsGrid.innerHTML = mealSuggestions
+                .map(item => `
+                    <div class="recommendation-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <p>${item.name} - Ksh ${item.price}</p>
+                        <button class="add-to-cart" data-name="${item.name}" data-price="${item.price}" data-image="${item.image}">Add to Cart</button>
+                    </div>
+                `)
+                .join("");
+        }
+
+        // Render recommendations when the page loads
+        renderRecommendations();
+    </script>
 </body>
 </html>
