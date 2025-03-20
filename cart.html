@@ -26,23 +26,8 @@
     <!-- Food Suggestions Section -->
     <section class="suggestions">
         <h3>You Might Also Like</h3>
-        <div class="suggestions-grid">
-            <div class="suggestion-item">
-                <img src="images/suggestion1.jpg" alt="Suggestion 1">
-                <p>Grilled Salmon Salad</p>
-            </div>
-            <div class="suggestion-item">
-                <img src="images/suggestion2.jpg" alt="Suggestion 2">
-                <p>Chocolate Lava Cake</p>
-            </div>
-            <div class="suggestion-item">
-                <img src="images/suggestion3.jpg" alt="Suggestion 3">
-                <p>Fruit Smoothie Bowl</p>
-            </div>
-            <div class="suggestion-item">
-                <img src="images/suggestion4.jpg" alt="Suggestion 4">
-                <p>Spicy Chicken Wrap</p>
-            </div>
+        <div id="suggestions-grid" class="suggestions-grid">
+            <!-- Suggestions will be dynamically inserted here -->
         </div>
     </section>
 
@@ -58,5 +43,62 @@
             <button onclick="closeOrderPopup()">OK</button>
         </div>
     </div>
+
+    <script>
+        // Function to get meal-based suggestions
+        function getMealSuggestions() {
+            const hour = new Date().getHours();
+            let mealTime = '';
+
+            if (hour >= 6 && hour < 12) {
+                mealTime = 'breakfast';
+            } else if (hour >= 12 && hour < 18) {
+                mealTime = 'lunch';
+            } else {
+                mealTime = 'dinner';
+            }
+
+            const suggestions = {
+                breakfast: [
+                    { name: "Pancakes", image: "images/pancakes.jpg" },
+                    { name: "Omelette", image: "images/omelette.jpg" },
+                    { name: "French Toast", image: "images/french-toast.jpg" },
+                    { name: "Avocado Toast", image: "images/avocado-toast.jpg" }
+                ],
+                lunch: [
+                    { name: "Grilled Chicken Salad", image: "images/grilled-chicken-salad.jpg" },
+                    { name: "Beef Burger", image: "images/beef-burger.jpg" },
+                    { name: "Spaghetti Bolognese", image: "images/spaghetti-bolognese.jpg" },
+                    { name: "Fish & Chips", image: "images/fish-and-chips.jpg" }
+                ],
+                dinner: [
+                    { name: "Steak & Mashed Potatoes", image: "images/steak-mashed-potatoes.jpg" },
+                    { name: "Grilled Salmon", image: "images/grilled-salmon.jpg" },
+                    { name: "Chicken Alfredo", image: "images/chicken-alfredo.jpg" },
+                    { name: "Vegetable Lasagna", image: "images/vegetable-lasagna.jpg" }
+                ]
+            };
+
+            return suggestions[mealTime];
+        }
+
+        // Function to render meal-based suggestions
+        function renderSuggestions() {
+            const suggestionsGrid = document.getElementById("suggestions-grid");
+            const mealSuggestions = getMealSuggestions();
+
+            suggestionsGrid.innerHTML = mealSuggestions
+                .map(item => `
+                    <div class="suggestion-item">
+                        <img src="${item.image}" alt="${item.name}">
+                        <p>${item.name}</p>
+                    </div>
+                `)
+                .join("");
+        }
+
+        // Render suggestions when the page loads
+        renderSuggestions();
+    </script>
 </body>
 </html>
