@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
     updateCartCount();
 
     // Add to cart functionality
@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clear cart
     document.getElementById("clear-cart")?.addEventListener("click", function () {
         localStorage.removeItem("cart"); // Clear the cart
+        cart = []; // Reset the cart array
         renderCart(); // Re-render the cart (it will be empty)
         updateCartCount(); // Update the cart count in the header
         showPopup("Cart cleared!"); // Show a popup notification
@@ -43,10 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Place order
     document.getElementById("place-order")?.addEventListener("click", function () {
-        showOrderPopup(); // Show the order confirmation popup
-        localStorage.removeItem("cart"); // Clear the cart
-        renderCart(); // Re-render the cart (it will be empty)
-        updateCartCount(); // Update the cart count in the header
+        if (cart.length === 0) {
+            showPopup("Your cart is empty. Add items to place an order!");
+        } else {
+            showOrderPopup(); // Show the order confirmation popup
+            localStorage.removeItem("cart"); // Clear the cart
+            cart = []; // Reset the cart array
+            renderCart(); // Re-render the cart (it will be empty)
+            updateCartCount(); // Update the cart count in the header
+        }
     });
 });
 
@@ -63,6 +69,12 @@ function renderCart() {
     const cartContainer = document.getElementById("cart-items");
     cartContainer.innerHTML = ""; // Clear the cart container
 
+    if (cart.length === 0) {
+        // Display a message if the cart is empty
+        cartContainer.innerHTML = `<p class="empty-cart-message">Your cart is empty. Add items to get started!</p>`;
+        return;
+    }
+
     let totalPrice = 0;
 
     // Loop through each item in the cart and display it
@@ -70,15 +82,16 @@ function renderCart() {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("cart-item");
         itemDiv.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
+            <img src="${item.image}" alt="${item.name}" class="cart-item-image">
             <div class="cart-item-details">
-                <p>${item.name}</p>
-                <p>Ksh ${item.price.toFixed(2)}</p>
+                <p class="cart-item-name">${item.name}</p>
+                <p class="cart-item-price">Ksh ${item.price.toFixed(2)}</p>
                 <div class="quantity-controls">
                     <button onclick="updateQuantity('${item.name}', -1)">-</button>
                     <span>${item.quantity}</span>
                     <button onclick="updateQuantity('${item.name}', 1)">+</button>
                 </div>
+                <button onclick="removeItem('${item.name}')" class="remove-item">Remove</button>
             </div>
         `;
         cartContainer.appendChild(itemDiv);
@@ -101,13 +114,21 @@ function updateQuantity(name, change) {
 
     if (item) {
         item.quantity += change; // Update the quantity
-        if (item.quantity <= 0) {
-            cart = cart.filter(i => i.name !== name); // Remove the item if quantity is 0
-        }
+        if (item.quantity < 1) item.quantity = 1; // Prevent quantity from going below 1
         localStorage.setItem("cart", JSON.stringify(cart)); // Save the updated cart
         renderCart(); // Re-render the cart
         updateCartCount(); // Update the cart count in the header
     }
+}
+
+// Remove item from the cart
+function removeItem(name) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart = cart.filter(item => item.name !== name); // Remove the item
+    localStorage.setItem("cart", JSON.stringify(cart)); // Save the updated cart
+    renderCart(); // Re-render the cart
+    updateCartCount(); // Update the cart count in the header
+    showPopup(`${name} removed from cart!`); // Show a popup notification
 }
 
 // Show popup notification
