@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Cart</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/logo.jpg" type="image/jpg">
     <script defer src="script.js"></script>
 </head>
 <body>
@@ -23,19 +24,6 @@
         </div>
     </div>
 
-    <!-- Food Suggestions Section -->
-    <section class="suggestions">
-        <h3>You Might Also Like</h3>
-        <div id="suggestions-grid" class="suggestions-grid">
-            <!-- Suggestions will be dynamically inserted here -->
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 Food Order. All rights reserved.</p>
-    </footer>
-
     <!-- Order confirmation popup -->
     <div id="order-popup" class="popup">
         <div class="popup-content">
@@ -44,61 +32,9 @@
         </div>
     </div>
 
-    <script>
-        // Function to get meal-based suggestions
-        function getMealSuggestions() {
-            const hour = new Date().getHours();
-            let mealTime = '';
-
-            if (hour >= 6 && hour < 12) {
-                mealTime = 'breakfast';
-            } else if (hour >= 12 && hour < 18) {
-                mealTime = 'lunch';
-            } else {
-                mealTime = 'dinner';
-            }
-
-            const suggestions = {
-                breakfast: [
-                    { name: "Pancakes", image: "images/pancakes.jpg" },
-                    { name: "Omelette", image: "images/omelette.jpg" },
-                    { name: "French Toast", image: "images/french-toast.jpg" },
-                    { name: "Avocado Toast", image: "images/avocado-toast.jpg" }
-                ],
-                lunch: [
-                    { name: "Grilled Chicken Salad", image: "images/grilled-chicken-salad.jpg" },
-                    { name: "Beef Burger", image: "images/beef-burger.jpg" },
-                    { name: "Spaghetti Bolognese", image: "images/spaghetti-bolognese.jpg" },
-                    { name: "Fish & Chips", image: "images/fish-and-chips.jpg" }
-                ],
-                dinner: [
-                    { name: "Steak & Mashed Potatoes", image: "images/steak-mashed-potatoes.jpg" },
-                    { name: "Grilled Salmon", image: "images/grilled-salmon.jpg" },
-                    { name: "Chicken Alfredo", image: "images/chicken-alfredo.jpg" },
-                    { name: "Vegetable Lasagna", image: "images/vegetable-lasagna.jpg" }
-                ]
-            };
-
-            return suggestions[mealTime];
-        }
-
-        // Function to render meal-based suggestions
-        function renderSuggestions() {
-            const suggestionsGrid = document.getElementById("suggestions-grid");
-            const mealSuggestions = getMealSuggestions();
-
-            suggestionsGrid.innerHTML = mealSuggestions
-                .map(item => `
-                    <div class="suggestion-item">
-                        <img src="${item.image}" alt="${item.name}">
-                        <p>${item.name}</p>
-                    </div>
-                `)
-                .join("");
-        }
-
-        // Render suggestions when the page loads
-        renderSuggestions();
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Food Order. All rights reserved.</p>
+    </footer>
 </body>
 </html>
